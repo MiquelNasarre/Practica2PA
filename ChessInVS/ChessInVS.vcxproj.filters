@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{836455ef-fc2a-43a3-8fab-e29fe5a5408d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Private">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Sources\Public">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Sources\pch">
+      <UniqueIdentifier>{57af7ab4-7a7a-43d8-8caa-51d375bf37d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Public\Pieces">
+      <UniqueIdentifier>{def8ed40-e284-4e60-a144-424f806561f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Private\Pieces">
+      <UniqueIdentifier>{767e6c3b-7f5e-4fa5-9330-17f984ae7218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\Board.cpp">
+      <Filter>Sources\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\BoardInteraction.cpp">
+      <Filter>Sources\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Game.cpp">
+      <Filter>Sources\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Piece.cpp">
+      <Filter>Sources\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Pieces\Bishop.cpp">
+      <Filter>Sources\Private\Pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Pieces\King.cpp">
+      <Filter>Sources\Private\Pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Pieces\Knight.cpp">
+      <Filter>Sources\Private\Pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Pieces\Pawn.cpp">
+      <Filter>Sources\Private\Pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Pieces\Queen.cpp">
+      <Filter>Sources\Private\Pieces</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Pieces\Rook.cpp">
+      <Filter>Sources\Private\Pieces</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\Board.h">
+      <Filter>Sources\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Game.h">
+      <Filter>Sources\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Piece.h">
+      <Filter>Sources\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\ChessInVS.h">
+      <Filter>Sources\pch</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Pieces\Bishop.h">
+      <Filter>Sources\Public\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Pieces\King.h">
+      <Filter>Sources\Public\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Pieces\Knight.h">
+      <Filter>Sources\Public\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Pieces\Pawn.h">
+      <Filter>Sources\Public\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Pieces\Queen.h">
+      <Filter>Sources\Public\Pieces</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Pieces\Rook.h">
+      <Filter>Sources\Public\Pieces</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
