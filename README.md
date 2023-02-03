@@ -9,7 +9,7 @@ You can also save your games as an encrypted .txt file so you can reload them at
 There's also some other useful functions for console display outside the classes.
 
 This library is no use for speed because all the classes involved are really heavy and it wouldn't fit at
-all in a chess engine which should be as simple and efficient as possible. On the other side this library
+all in a chess engine which should be as simple and efficient as possible. On the other hand this library
 can be a really useful ground to create a nice chess app or display.
 
 In that regard the Game class already contains an example console display game function including all the
