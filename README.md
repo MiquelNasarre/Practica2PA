@@ -21,7 +21,7 @@ library capabilities (in Catalan).
 ## Getting Started
 Once you've cloned, open the solution file you'll find in the main folder and compile the ChessInVS project. 
 That will generate the library so you can link it to other projects and make use of its classes and functions. 
-The header you must include in the other projects is the phc ChessInVS.h. 
+The header you must include in the other projects is the pch ChessInVS.h. 
 
 If you want an already linked project there's also one inside called FutureGUI, if you compile it and run it 
 should work with no problem using the library and displaying the example function in a console.
