@@ -14,10 +14,13 @@ public:
     void ExchangeWith(Game* G);
     void StringMoveList();
     void DeleteGameTree();
-    void GenerateTxtGameFile(char* name);
-    void OpenTxtGameFile(char* name);
     void DeleteLine(unsigned char l);
     bool DrawByRepetition();
+
+    bool GenerateTxtGameFile(char* name);
+    bool OpenTxtGameFile(char* name);
+    bool MergeWithFile(char* name);
+    
 
     void ConsoleInputGameExample();
 

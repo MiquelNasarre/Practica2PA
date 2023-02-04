@@ -228,7 +228,21 @@ void Game::DeleteGameTree() {
     S = 0;
 }
 
-void Game::GenerateTxtGameFile(char* name) {
+void Game::DeleteLine(unsigned char l) {
+    int j = 0;
+    while (j <= l) {
+        if (Lines[j])j++;
+        else return;
+    }
+    Lines[l]->DeleteGameTree();
+    free(Lines[l]);
+    while (Lines[l]) {
+        Lines[l] = Lines[l + 1];
+        l++;
+    }
+}
+
+bool Game::GenerateTxtGameFile(char* name) {
     char FullName[100] = GAME_FILES_FOLDER;
     int i = 0;
     while (FullName[i])i++;
@@ -240,6 +254,7 @@ void Game::GenerateTxtGameFile(char* name) {
     FullName[i++] = 't';
 
     FILE* file = fopen(FullName, "w");
+    if (!file)return false;
 
     unsigned char* m = (unsigned char*)calloc(1, 1000);
     int k = -1;
@@ -264,12 +279,10 @@ void Game::GenerateTxtGameFile(char* name) {
         fprintf(file, "%u ", m[i] + 1);
     }
     fclose(file);
+    return true;
 }
 
-void Game::OpenTxtGameFile(char* name) {
-    while (Pre)ExchangeWith(Pre);
-    DeleteGameTree();
-
+bool Game::OpenTxtGameFile(char* name) {
     char FullName[100] = GAME_FILES_FOLDER;
     int i = 0;
     while (FullName[i])i++;
@@ -281,7 +294,11 @@ void Game::OpenTxtGameFile(char* name) {
     FullName[i++] = 't';
 
     FILE* file = fopen(FullName, "r");
-    if (!file)return;
+    if (!file)return false;
+
+    while (Pre)ExchangeWith(Pre);
+    DeleteGameTree();
+
     unsigned char P;
     B = (Board*)calloc(1, sizeof(Board));
 
@@ -320,20 +337,58 @@ void Game::OpenTxtGameFile(char* name) {
         else NewMove(P - 1);
     }
     fclose(file);
+    return true;
 }
 
-void Game::DeleteLine(unsigned char l) {
+bool Game::MergeWithFile(char* name) {
+    char FullName[100] = GAME_FILES_FOLDER;
+    int i = 0;
+    while (FullName[i])i++;
     int j = 0;
-    while (j <= l) {
-        if (Lines[j])j++;
-        else return;
+    while (name[j]) FullName[i++] = name[j++];
+    FullName[i++] = '.';
+    FullName[i++] = 't';
+    FullName[i++] = 'x';
+    FullName[i++] = 't';
+
+    FILE* file = fopen(FullName, "r");
+    if (!file)return false;
+
+    unsigned char* m = (unsigned char*)calloc(1, 1000);
+    int k = -1;
+    while (Pre) {
+        m[++k] = this->PreM;
+        ExchangeWith(Pre);
     }
-    Lines[l]->DeleteGameTree();
-    free(Lines[l]);
-    while (Lines[l]) {
-        Lines[l] = Lines[l + 1];
-        l++;
+
+    char P;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].K->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].Q[0]->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].R[0]->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].R[1]->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].N[0]->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].N[1]->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].B[0]->Pos)return false;
+    fscanf(file, "%c", &P);
+    if (P - 48 != B->P[0].B[1]->Pos)return false;
+    fscanf(file, "\n");
+
+    while (fscanf(file, "%hhu ", &P) != EOF) {
+        if (!P)GoBack();
+        else NewMove(P - 1);
     }
+    fclose(file);
+
+    while (Pre)ExchangeWith(Pre);
+    for (i = k; i >= 0; i--) NewMove(m[i]);
+    return true;
 }
 
 //GAMING EXAMPLE FUNCTIONS
@@ -454,6 +509,13 @@ void Game::ConsoleInputGameExample(){
             i++;
         }
         DeleteLine(L - 1);
+    }
+
+    if ((m[0] == 'm' || m[0] == 'M') && !m[1]) {
+        char* name = (char*)calloc(1, 20);
+        printf("\n   ESCRIU EL NOM DE LA PARTIDA AMB LA QUE VOLS FUSIONAR AQUESTA   ");
+        scanf("%s", name);
+        MergeWithFile(name);
     }
 
     return ConsoleInputGameExample();
